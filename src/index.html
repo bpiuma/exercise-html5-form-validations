@@ -20,83 +20,82 @@
   </head>
 
   <body>
-    <div class="container border position-relative mt-5">
-      <nav class="navbar navbar-light bg-light">
+    <div class="container border rounded-lg position-relative mt-5 mb-5 p-0">
+      <nav class="navbar navbar-light border-bottom bg-light m-0">
         <a class="navbar-brand">
           Payment for example
         </a>
       </nav>
-      <form id="formulario">
-        <div class="form-row">
-          <div class="alert alert-danger col-12" id="alert" role="alert">
-            Some fields are missing
-          </div>
+
+      <form id="form" class="container p-0 mt-4">
+        <div class="form-row alert alert-danger m-3" role="alert">
+          Some fields are missing
         </div>
-        <div class="form-row">
+
+        <div class="form-row m-2">
           <div class="form-group col-5">
-            <label for="card">Card#</label>
+            <label for="inputCard">Card#</label>
             <input
               type="number"
               class="form-control"
-              id="card"
+              id="inputCard"
               placeholder="XXXXXXXXXXXXXXX"
             />
           </div>
           <div class="form-group col-3">
-            <label for="cvc">CVC#</label>
+            <label for="inputCVC">CVC#</label>
             <input
               type="number"
               class="form-control"
-              id="cvc"
+              id="inputCVC"
               placeholder="0000"
             />
           </div>
           <div class="form-group col-4">
-            <label for="amount">Amount</label>
+            <label for="inputAmount">Amount</label>
             <input
               type="number"
               class="form-control"
-              id="amount"
+              id="inputAmount"
               placeholder="$ Amount"
             />
           </div>
         </div>
-        <div class="form-row">
+
+        <div class="form-row m-2">
           <div class="form-group col-6">
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" id="firstname" />
+            <label for="inputFirstName">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" />
           </div>
           <div class="form-group col-6">
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" id="lastname" />
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" />
           </div>
         </div>
-        <div class="form-row">
+
+        <div class="form-row m-2">
           <div class="form-group col-6">
-            <label for="city">City</label>
-            <input type="text" class="form-control" id="city" />
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity" />
           </div>
           <div class="form-group col-3">
-            <label for="inputPassword4">State</label>
-            <select
-              class="form-control"
-              id="exampleFormControlSelect2"
-              placeholder="Pick"
-            >
+            <label for="inputState">State</label>
+            <select class="form-control" id="inputState" placeholder="Pick">
               <option>Pick a state</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              <option>State 1</option>
+              <option>State 2</option>
+              <option>State 3</option>
             </select>
           </div>
           <div class="form-group col-3">
-            <label for="postal">Postal code</label>
-            <input type="number" value="" class="form-control" id="postal" />
+            <label for="inputPostalCode">Postal code</label>
+            <input type="number" class="form-control" id="inputPostalCode" />
           </div>
         </div>
-        <div class="form-row">
+
+        <div class="form-row m-2">
           <div class="form-group col-3">
-            <label for="inputEmail4">We accept:</label>
+            <label for="inputWeAccept">We accept:</label>
             <div
               class="bg-secondary text-white d-flex justify-content-between p-2 rounded-lg"
             >
@@ -105,10 +104,10 @@
                   class="form-check-input"
                   type="radio"
                   name="inlineRadioOptions"
-                  id="inlineRadio1"
+                  id="visa"
                   value="option1"
                 />
-                <label class="form-check-label" for="inlineRadio1">
+                <label class="form-check-label" for="visa">
                   <i class="fab fa-cc-visa"></i>
                 </label>
               </div>
@@ -117,10 +116,10 @@
                   class="form-check-input"
                   type="radio"
                   name="inlineRadioOptions"
-                  id="inlineRadio2"
+                  id="master"
                   value="option2"
                 />
-                <label class="form-check-label" for="inlineRadio2">
+                <label class="form-check-label" for="master">
                   <i class="fab fa-cc-mastercard"></i>
                 </label>
               </div>
@@ -129,10 +128,10 @@
                   class="form-check-input"
                   type="radio"
                   name="inlineRadioOptions"
-                  id="inlineRadio1"
+                  id="diners"
                   value="option1"
                 />
-                <label class="form-check-label" for="inlineRadio1">
+                <label class="form-check-label" for="diners">
                   <i class="fab fa-cc-diners-club"></i>
                 </label>
               </div>
@@ -141,10 +140,10 @@
                   class="form-check-input"
                   type="radio"
                   name="inlineRadioOptions"
-                  id="inlineRadio2"
+                  id="american"
                   value="option2"
                 />
-                <label class="form-check-label" for="inlineRadio2">
+                <label class="form-check-label" for="american">
                   <i class="fab fa-cc-amex"></i>
                 </label>
               </div>
@@ -152,21 +151,35 @@
           </div>
           <div class="form-group col-3"></div>
           <div class="form-group col-6">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
+            <label for="inputMessage">Message</label>
+            <textarea
+              class="form-control"
+              id="inputMessage"
+              rows="3"
+            ></textarea>
             <p class="text-muted small">Add any notes here.</p>
           </div>
         </div>
+
         <div
-          class="form-row d-flex flex-row-reverse bg-light"
+          class="form-row d-flex flex-row-reverse border-top bg-light m-0"
           role="group"
           aria-label="Basic example"
         >
-          <button type="submit" class="btn btn-primary m-1">Send</button>
-          <button type="reset" class="btn btn-secondary m-1">Cancel</button>
+          <button id="btnSend" type="submit" class="btn btn-primary m-2 col-1">
+            Send
+          </button>
+          <button
+            id="btnCancel"
+            type="reset"
+            class="btn btn-secondary m-2 col-1"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
+
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

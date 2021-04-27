@@ -1,4 +1,3 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 import validator from "validator";
@@ -10,54 +9,84 @@ window.onload = function() {
   console.log("Hello Rigo from the console!");
 };
 
-let formu = document.getElementById("formulario");
+//obtengo los elementos del DOM
+let form = document.getElementById("form");
+let alerta = document.querySelector(".alert");
+let card = document.getElementById("inputCard");
+let cvc = document.getElementById("inputCVC");
+let amount = document.getElementById("inputAmount");
+let firstName = document.getElementById("inputFirstName");
+let lastName = document.getElementById("inputLastName");
+let city = document.getElementById("inputCity");
+let state = document.getElementById("inputState");
+let postalCode = document.getElementById("inputPostalCode");
+let message = document.getElementById("inputMessage");
 
-formu.addEventListener("submit", function(event) {
-  event.preventDefault(); //prevengo las acciones por defecto
+//agrego la accion para el boton send
+form.addEventListener("submit", function(event) {
+  //prevengo la acción por defecto
+  event.preventDefault();
 
-  //INPUT CARD
-  let card = document.getElementById("card");
-  validarCamposVacios(card);
+  //valido si los inputs estan vacios
+  validarVacio(card);
+  validarVacio(cvc);
+  validarVacio(amount);
+  validarVacio(firstName);
+  validarVacio(lastName);
+  validarVacio(city);
+  validarEstado(state);
+  validarVacio(postalCode);
+  validarVacio(message);
 
-  //INPUT CVC
-  let CVC = document.getElementById("cvc");
-  validarCamposVacios(cvc);
+  //validacion de campo vacio
+  function validarVacio(campo) {
+    //muestro la alerta y aplico el estilo, segun corresponda
+    if (validator.isEmpty(campo.value)) {
+      alerta.style.display = "block";
+      campo.style.backgroundColor = "pink";
+    } else {
+      alerta.style.display = "none";
+      campo.style.backgroundColor = "white";
+    }
+  }
 
-  //INPUT AMOUNT
-  let amount = document.getElementById("amount");
-  validarCamposVacios(amount);
-
-  //INPUT FIRST NAME
-  let firstname = document.getElementById("firstname");
-  validarCamposVacios(firstname);
-
-  //INPUT LASTNAME
-  let lastname = document.getElementById("lastname");
-  validarCamposVacios(lastname);
-
-  //INPUT CITY
-  let city = document.getElementById("city");
-  validarCamposVacios(city);
-
-  //INPUT POSTAL CODE
-  let postal = document.getElementById("postal");
-  validarCamposVacios(postal);
-
-  //INPUT MESSAGE
-  let message = document.getElementById("message");
-  validarCamposVacios(message);
+  //validacion exclusiva para State
+  function validarEstado(campo) {
+    //muestro la alerta y aplico el estilo
+    if (validator.equals(campo.value, "Pick a state")) {
+      alerta.style.display = "block";
+      campo.style.backgroundColor = "pink";
+    } else {
+      alerta.style.display = "none";
+      campo.style.backgroundColor = "white";
+    }
+  }
 });
 
-function validarCamposVacios(campo) {
-  //traigo la alerta
-  let alerta = document.getElementById("alert");
+//agrego la accion para el boton cancel
+form.addEventListener("reset", function(event) {
+  //prevengo la acción por defecto
+  event.preventDefault();
 
-  if (validator.isEmpty(campo.value)) {
-    alerta.style.display = "block";
-    campo.style.backgroundColor = "#f8d7da";
-  } else {
+  resetear(card);
+  resetear(cvc);
+  resetear(amount);
+  resetear(firstName);
+  resetear(lastName);
+  resetear(city);
+  resetearEstado(state);
+  resetear(postalCode);
+  resetear(message);
+
+  function resetear(campo) {
     alerta.style.display = "none";
     campo.style.backgroundColor = "white";
     campo.value = "";
   }
-}
+
+  function resetearEstado(campo) {
+    alerta.style.display = "none";
+    campo.style.backgroundColor = "white";
+    campo.value = "Pick a state";
+  }
+});
